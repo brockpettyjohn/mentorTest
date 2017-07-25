@@ -1,28 +1,40 @@
 Answer each question in a written format
 
 1. What does semantic HTML mean?
+Semantic html is a new commmon practice and set of tag names introduced by HTML5 that allows you to specifiy what an element or group of elements is actually doing or going to be used for.  Instead of using blanket <div></div> tags for everything you would use a tag specific to the the purpose of the element such as <header></header> for header <footer></footer> for footer and so on.
 
 2. What is the box model?
+The box model is used to describe how html elements are structured so as to be laid out in CSS.  The name comes from fact that each css style element changes a different box surrounding the content.  When trying to lay out an html element the order is as follows working your way from the content itself to the outer layer it goes actual html content, padding, border, and then margin.  It shows how each of those styling items manipulates the content on the page.
 
 3. What is the difference between IDs and Classes?
+ID is used as a unique identifier for an html element in css styling meaning that when an element is given an id that id cannot be applied to any other element and neither will its respective styling.  IDs also take priority over classes in the hierarchy of imporance.  An ids styling will over ride that of a class if the two conflict on a particular element.  Classes can be applied multiple html elements and in classes you can also put multiple css style identifiers.
 
 4. What does the z-index do?
+The z-index is the axis that affects the depth of the view, determining where elements lie front to back, or also can be thought of as the stacking of the elements.  When two elements share the exact same space z-index determines which item will be visible in the front and which will be in the back.
 
 5. Summarize what the keyword 'this' is used for?
+'this' is used as variable typically for a property in a method or a function.  It takes the value of the of the object that invokes the function where 'this' is used.  It can also be used outside of functions where it then takes global scope but it is not commonly used this way.  When outside of a function it can also be assigned to an object or context by using bind, call, or apply (this is a summary so I won't explain those).  You want to use 'this' because if you were to use the actual name of the object as opposed to 'this' it can cause problems later if another variable else where shares the same variable name.  'This' just ties the property to the function it is inside alleviating that problem.
 
 6. What is a callback?
+A callback is a function that is called as a parameter to another function.  It is typically used for asynchronous execution like http requests and reading files and event listeners and handlers.
 
 7. What is a closure?
+A closure is a function returned within another function.  It serves many purposes but one of its best uses is to give the inner function access to the variables and parameters of the parent or outer function.
 
 8. How does prototype work?
+When a constructor function has a function as one of the properties on it, every time you time you used the contructor you would be re-running that function in the constructor.  That creates a substantial amount of redundancy and memory usage.  So instead of running through that function over and over you can use the prototype to essentially store the function as one instance of copy but use its functionality in the constructor function without making copies.  You may also use prototypes in ES6 to create custom methods.
 
 9. What is MVC?
+So at the most generic level it is the Model, View, Controller structure used in object oriented.  The view is what most users see or interact with and where the data is displayed.  The Model is what gives the View its data or is the origin of the logic and data-managment.  Since the View and the Model cannot talk to each other the Controller exists to receive data from the user and make calls for the data from the Model and receives info from the Model to give functionality to the View.
 
 10. What is the component lifecycle?
+When a new component gets loaded on the dom the component lifecycle refers to the point where your method executes in relation to the loading of the component.  There are specific "hook" methods that will determine this and they componentWillMount, componentDidMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate, componentDidUpdate, componentWillUnmount.
 
 11. What is REST?
+Representational State Transfer is what REST stands for and it is an architecture.  In the client server relationship REST decides that the server doesn't need to remember anything about the client but everything that the client needs it receives from the server and then the server forgets it.  It is stateless.  Other pieces of the REST architecture include GET, POST, PUT, and DELETE operations used through http requests.  One other thing to understand about REST is how URLs are used.  Instead using Urls to reference files such as http://brock.com/brockisrad.js  you use domain/path/query or param that represents actual data in most cases like this http://brock.com/brockisrad/:id.  It also returns XML or JSON.
 
 12. Name three ways of getting data from the URL using express
+req.body, req.query, req.params 
 
 create table users (
 id serial,
@@ -33,9 +45,19 @@ email varchar(255)
 12. Given the Schema above, write the following four basic CRUD db queries using postgres syntax
 
 -Get all users:
+SELECT * 
+FROM user
 
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+INSERT INTO users
+('name', 'email')
+values ('brock pettyjohn', 'fake@fake.com')
 
 -Update the newly created user's name to 'Bobby Boy':
-
+UPDATE users
+SET name = 'Bobby Boy'
+WHERE id = 1
 -Delete the newly updated user:
+
+DELETE FROM user
+WHERE id = 1
